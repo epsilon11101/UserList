@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import InputForm from "./InputForm";
-import Button from "../UI/Card/Button";
+import Button from "../UI/Button/Button";
 
 import styles from "./UserForm.module.scss";
 
