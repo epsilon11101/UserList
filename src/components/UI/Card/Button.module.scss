@@ -1,0 +1,13 @@
+.button{
+    background-color: goldenrod;
+    text-transform: capitalize;
+    font-size: 20px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    width: 50%;
+    border: none;
+    cursor: pointer;
+    &:hover{
+        background-color: gold;
+    }
+}

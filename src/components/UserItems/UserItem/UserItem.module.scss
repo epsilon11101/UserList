@@ -1,0 +1,16 @@
+.UserItem{
+    list-style-type: none;
+    width: 90%;
+    border: solid 1px goldenrod ;
+    border-radius: 5px;
+    color: black;
+    padding: 2px 2px;
+    display: inline-block;
+    margin-bottom: 10px;
+    
+    &:hover{
+        background-color: gold;
+        color: white;
+        cursor: pointer;
+    }
+}
