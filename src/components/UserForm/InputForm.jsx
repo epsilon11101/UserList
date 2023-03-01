@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./InputForm.module.scss";
 
 const inputForm = (props) => {
+  // const [isEmpty, setIsEmpty] = useState(false);
+
+  const onEmptyHandler = (data) => {};
+
   const onChangeHandler = (e) => {
     props.onGetInputData(e.target.value);
   };
