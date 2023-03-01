@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-import Card from "./components/UI/Card/Card";
 import UserForm from "./components/UserForm/UserForm";
 import UserListItem from "./components/UserItems/UserListItems/UserListItems";
 
@@ -14,7 +13,7 @@ function App() {
       age: "31",
     },
     {
-      IDBTransaction: "1",
+      id: "1",
       name: "Ian",
       age: "9",
     },
@@ -29,12 +28,8 @@ function App() {
 
   return (
     <div className="App">
-      <Card>
-        <UserForm onGetUserData={UserData} users={users} />
-      </Card>
-      <Card>
-        <UserListItem users={users} />
-      </Card>
+      <UserForm onGetUserData={UserData} users={users} />
+      <UserListItem AllUsers={users} />
     </div>
   );
 }
