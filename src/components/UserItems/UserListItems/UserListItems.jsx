@@ -1,16 +1,19 @@
 import React from "react";
 
 import UserItem from "../UserItem/UserItem";
+import Card from "../../UI/Card/Card";
 
 import styles from "./UserListItem.module.scss";
 
 const UserListItem = (props) => {
   return (
-    <ul className={styles.UserListItem}>
-      {props.users.map((user) => (
-        <UserItem key={user.id} user={user} />
-      ))}
-    </ul>
+    <Card className="">
+      <ul className={styles.UserListItem}>
+        {props.AllUsers.map((user) => {
+          return <UserItem key={user.id} user={user} />;
+        })}
+      </ul>
+    </Card>
   );
 };
 
