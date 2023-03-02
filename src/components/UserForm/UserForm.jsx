@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 import styles from "./UserForm.module.scss";
 
@@ -8,15 +8,19 @@ import Button from "../UI/Button/Button";
 import Modal from "../UI/Modal/Modal";
 
 const userForm = (props) => {
-  const [userName, setUserName] = useState("");
-  const [userAge, setUserAge] = useState("");
+  const nameInputRef = useRef(null);
+  const ageInputRef = useRef(null);
+
   const [user, setUser] = useState({});
   const [error, setError] = useState();
 
   const submitHandler = (e) => {
     e.preventDefault();
 
-    const isEmpty = userName.trim().length === 0 && userAge.trim().length === 0;
+    const userName = nameInputRef.current.value;
+    const userAge = ageInputRef.current.value;
+
+    const isEmpty = userName.trim().length === 0 || userAge.trim().length === 0;
     const isNegative = +userAge < 0;
 
     if (isEmpty) {
@@ -41,26 +45,28 @@ const userForm = (props) => {
       age: userAge,
     };
     props.onGetUserData(newUSer);
-    setUserName("");
-    setUserAge("");
+    // setUserName("");
+    // setUserAge("");
+    nameInputRef.current.value = "";
+    ageInputRef.current.value = "";
     return;
   };
 
-  const getNameHandler = (data) => {
-    setUserName(data);
-    setUser((prevUser) => ({
-      ...prevUser,
-      name: data,
-    }));
-  };
+  // const getNameHandler = (data) => {
+  //   setUserName(data);
+  //   setUser((prevUser) => ({
+  //     ...prevUser,
+  //     name: data,
+  //   }));
+  // };
 
-  const getAgeHandler = (data) => {
-    setUserAge(data);
-    setUser((prevUser) => ({
-      ...prevUser,
-      age: data,
-    }));
-  };
+  // const getAgeHandler = (data) => {
+  //   setUserAge(data);
+  //   setUser((prevUser) => ({
+  //     ...prevUser,
+  //     age: data,
+  //   }));
+  // };
 
   const closeModal = () => {
     setError(null);
@@ -75,10 +81,18 @@ const userForm = (props) => {
       )}
       <Card className="">
         <form className={styles.form} onSubmit={submitHandler}>
-          <InputForm type="text" onGetInputData={getNameHandler}>
+          <InputForm
+            type="text"
+            // onGetInputData={getNameHandler}
+            ref={nameInputRef}
+          >
             username
           </InputForm>
-          <InputForm type="text" onGetInputData={getAgeHandler}>
+          <InputForm
+            type="text"
+            // onGetInputData={getAgeHandler}
+            ref={ageInputRef}
+          >
             user age
           </InputForm>
           <Button type="submit">add user</Button>
